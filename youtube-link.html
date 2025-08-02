@@ -2,45 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirecting to YouTube...</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f9f9f9;
-    }
-    a {
-      color: #ff0000;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <h1>Redirecting to YouTube...</h1>
-  <p>If you are not redirected automatically, <a id="redirect-link" href="https://www.youtube.com/@vishalsoniindia" target="_blank">click here to open in a new tab</a>.</p>
-
+  <title>Redirecting to youtube...</title>
   <script>
-    // Try to open in a new tab (may be blocked by browsers)
+    // Define URL once
     const YOUTUBE_URL = "https://www.youtube.com/@vishalsoniindia";
-    const redirectLink = document.getElementById('redirect-link');
-
-    // Focus the link so users can easily press Enter
+    
+    // Redirect logic
     window.addEventListener('DOMContentLoaded', () => {
-      redirectLink.focus();
+      // Update link in body
+      document.getElementById('fallback-link').href = YOUTUBE_URL;
       
-      // Attempt to open in a new tab (works only if allowed by browser)
+      // Perform redirect (0.5s delay allows DOM update)
       setTimeout(() => {
-        const newTab = window.open(YOUTUBE_URL, '_blank');
-        if (!newTab || newTab.closed) {
-          console.log("Popup blocked. Please click the link manually.");
-        }
+        window.location.href = YOUTUBE_URL;
       }, 500);
     });
   </script>
+  <!-- Meta redirect for non-JS users -->
+  <meta http-equiv="refresh" content="3; URL=https://www.youtube.com/@vishalsoniindia">
+</head>
+<body>
+  <p>Redirecting to youtube. If not redirected, <a id="fallback-link" href="https://www.youtube.com/@vishalsoniindia">click here</a>.</p>
 </body>
 </html>

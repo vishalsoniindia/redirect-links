@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to ElectroDonut YouTube Channel</title>
+    <title>Redirect to ElectroDonut YouTube</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -206,35 +206,26 @@
         </div>
         
         <div class="footer">
-            <p>Thank you for your support! ❤️ 2</p>
+            <p>Thank you for your support! ❤️</p>
         </div>
     </div>
 
     <script>
         document.getElementById('redirectBtn').addEventListener('click', function() {
             // Try to open the YouTube app with the correct deep link
-            window.location.href = 'vnd.youtube://www.youtube.com/@ElectroDonut';
+            const appLink = 'vnd.youtube://www.youtube.com/@ElectroDonut';
             
-            // Set a longer timeout for Brave browser
+            // Create an iframe for better compatibility with Brave
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = appLink;
+            document.body.appendChild(iframe);
+            
+            // Set a timeout to fallback to browser
             setTimeout(function() {
-                // Check if we're still on the same page
-                if (!document.hidden) {
-                    window.location.href = 'https://www.youtube.com/@ElectroDonut';
-                }
-            }, 1000);
-        });
-        
-        // Add a fallback for browsers that block the initial redirect
-        window.addEventListener('blur', function() {
-            // The app opened successfully, so don't redirect
-            clearTimeout(fallbackTimer);
-        });
-        
-        let fallbackTimer = setTimeout(function() {
-            if (!document.hidden) {
                 window.location.href = 'https://www.youtube.com/@ElectroDonut';
-            }
-        }, 1200);
+            }, 500);
+        });
     </script>
 </body>
 </html>

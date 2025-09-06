@@ -187,7 +187,7 @@
     <script>
         document.getElementById('redirectBtn').addEventListener('click', function() {
             // Try to open the YouTube app
-            window.location.href = 'vnd.youtube://channel/UCElectroDonut'; // App deep link
+            window.location.href = 'vnd.youtube://@ElectroDonut'; // App deep link
             
             // If app doesn't open, fallback to browser after a short delay
             setTimeout(function() {
@@ -197,7 +197,7 @@
         
         // Also trigger the redirect if the page loads on mobile (optional)
         if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            window.location.href = 'vnd.youtube://channel/UCElectroDonut';
+            window.location.href = 'vnd.youtube://@ElectroDonut';
             
             setTimeout(function() {
                 window.location.href = 'https://www.youtube.com/@ElectroDonut';

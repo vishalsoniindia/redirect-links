@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to ElectroDonut YouTube Channel</title>
+    <title>Redirect to ElectroDonut YouTube</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -166,9 +166,9 @@
         <h1>ElectroDonut YouTube Channel</h1>
         <p>Click the button below to open my YouTube channel in the app or browser</p>
         
-        <a id="redirectBtn" class="btn">
+        <button id="redirectBtn" class="btn">
             <i class="fab fa-youtube"></i> Open ElectroDonut Channel
-        </a>
+        </button>
         
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> How it works:</h3>
@@ -180,43 +180,26 @@
         </div>
         
         <div class="footer">
-            <p>Thank you for your support! ❤️</p>
+            <p>Thank you for your support! ❤️ 1</p>
         </div>
     </div>
 
     <script>
-        function isMobile() {
-            return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        function openYouTubeChannel() {
-            const appUrl = 'youtube://channel/UC_ElectroDonut'; // Replace UC_ElectroDonut with your actual channel ID
-            const webUrl = 'https://www.youtube.com/@ElectroDonut';
+        document.getElementById('redirectBtn').addEventListener('click', function() {
+            // Try to open the YouTube app with the correct deep link
+            window.location.href = 'vnd.youtube://www.youtube.com/@ElectroDonut';
             
-            if (isMobile()) {
-                // Try to open in YouTube app first
-                window.location.href = appUrl;
-                
-                // Fallback to web browser if app doesn't open
-                setTimeout(function() {
-                    window.location.href = webUrl;
-                }, 2000);
-            } else {
-                // For desktop, directly open in browser
-                window.open(webUrl, '_blank');
-            }
-        }
-
-        // Handle button click
-        document.getElementById('redirectBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            openYouTubeChannel();
+            // Set a timeout to fallback to browser if the app doesn't open
+            setTimeout(function() {
+                window.location.href = 'https://www.youtube.com/@ElectroDonut';
+            }, 800);
         });
-
-        // Auto-redirect on mobile load (optional - you can remove this if you want manual clicking only)
-        // if (isMobile()) {
-        //     setTimeout(openYouTubeChannel, 1000);
-        // }
+        
+        // Check if we're coming back from a failed app redirect
+        if (window.location.href.indexOf('redirect_attempt') !== -1) {
+            // Directly go to YouTube in browser without trying app again
+            window.location.href = 'https://www.youtube.com/@ElectroDonut';
+        }
     </script>
 </body>
 </html>

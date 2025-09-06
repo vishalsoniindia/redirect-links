@@ -1,198 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>YouTube Channel Opener - Apgy Tools</title>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="robots" content="noindex" />
-<meta charset="utf-8" />
-<meta property="fb:app_id" content="481764499926933" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Check Out My Channel - Apgy Tools" />
-<meta property="og:site_name" content="Apgy Tools"/>
-<meta property="og:image" content="https://tools.apgy.in/img/ytc-og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Check Out My Channel - Apgy Tools">
-<meta name="twitter:image" content="https://tools.apgy.in/img/ytc-og-image.jpg">
-<link rel="stylesheet" href="https://aslisachin.github.io/nvd-coins/styles.css" />
-<style>
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: none; /* Initially hidden */
-            z-index: 1000;
-        }
-
-        /* Popup Container */
-        .popup-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-        }
-
-        .card {
-            background-color: #2d2d2d;
-            color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 300px;
-            position: absolute;
-            top: 80px;
-            right: 20px;
-        }
-
-        .card h2 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* Close Button */
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px; /* Close button on the left */
-            background: #fff;
-            border: none;
-            color: #333;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9546893092793579" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7X8WEB2CBD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7X8WEB2CBD');
-</script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open YouTube Channel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .btn {
+      background: #ff0000;
+      color: #fff;
+      padding: 15px 25px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn:hover {
+      background: #e60000;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
 <body>
-    
-<!-- Popup Overlay Structure -->
-<!--<div class="popup-overlay" id="popup">-->
-<!--    <div class="popup-container">-->
-<!--        <button class="close-btn" onclick="closePopup()">X</button>-->
-<!--        <img src="https://tools.apgy.in/img/up-arrow.png" alt="Up Arrow" class="arrow">-->
-<!--        <div class="card">-->
-<!--            <h2>Open In YouTube?</h2>-->
-<!--            <p>Get an optimal experience by clicking the three dots ( ••• ) in the top right corner, then press "Open In Browser / Chrome".</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+  <h1>Open My YouTube Channel</h1>
+  <a class="btn" id="openYT" href="#">Open YouTube</a>
 
-<script>
-    // Function to show the popup
-    // function showPopup() {
-    //     // document.getElementById('popup').style.display = 'block';
-    //     $("#popup").fadeIn('2000');
-    // }
+  <script>
+    const channelId = "@ElectroDonut"; // your channel handle
+    const appLink = `youtube://www.youtube.com/${channelId}`;
+    const webLink = `https://www.youtube.com/${channelId}`;
 
-    // // Function to close the popup
-    // function closePopup() {
-    //     // document.getElementById('popup').style.display = 'none';
-    //     $("#popup").fadeOut('2000');
-    // }
-</script>
+    const btn = document.getElementById("openYT");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    
-    <div class="container">
-      <div class="main-dash">
-        <img src="https://tools.apgy.in/img/youtube-app-link-maker.webp" alt="" class="avatar" />
-        <h1 class="text-center mt-10 text-shadow">YT App Link Maker</h1>
+      // Try opening the YouTube app
+      const timeout = setTimeout(() => {
+        // fallback to browser after 1 second if app not installed
+        window.location.href = webLink;
+      }, 1000);
 
-        <p class="text-center mt-10">By ApgyTools</p>
-        
-        <!--<div id="buttons">-->
-        <!-- <a id="link" href="https://www.youtube.com/@ElectroDonut?sub_confirmation=1" target="_blank">-->
-        <!--     <button class="another-button btn-block mt-10" id="payBTN">Open On YouTube</button>-->
-        <!-- </a>-->
-        <!--</div>-->
-        
-        <div class="ytvideo">
-            <a href="https://tools.apgy.in/tool/youtube-app-link/?ref=YT-Channel-Page" target="_blank"><img class="text-center mt-10" width="100%" src="https://tools.apgy.in/blog/thumbnails/how-to-make-youtube-link-that-opens-in-app.jpg"/></a>
-        </div>
-        <p class="text-center mt-10">This tool will help you gain more subscribers and revenue by redirecting users to the YouTube app on their smartphone instead of an in-app browser.</p>
-        <br/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9546893092793579"
-     crossorigin="anonymous"></script>
-<!-- tools-top -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9546893092793579"
-     data-ad-slot="8463431575"
-     data-ad-format="auto"
-     data-full-width-responsive="false"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-        <br/>
-        
-        <div id="buttons">
-         <a id="linktoopenapp" href="https://tools.apgy.in/tool/youtube-app-link/?ref=exit-page" target="_blank">
-             <button class="another-button btn-block mt-10" id="payBTN">TRY NOW!!</button>
-         </a>
-      </div>
-      </div>
-      
-      <div id="buttons">
-         <a id="link" href="https://www.youtube.com/@ElectroDonut?sub_confirmation=1" target="_blank">
-             <button class="another-button btn-block mt-10" id="payBTN">Open This Channel On YouTube</button>
-         </a>
-      </div>
-    </div>
-    <br/>
-    
-    
-    
-
-
-<script>
-         setTimeout(function(){
-             var link = document.getElementById('link');
-             link.click();
-             //window.location.href = 'https://www.youtube.com/watch?v=';
-         }, 2000);
-    // Call showPopup() to display the popup after page load
-    // showPopup();
-        
-</script>
-
-     
-
-
-
-<br/>
-<script>
-if($('#addd1').length >0 ){
-   setTimeout(function() {
-    $("#addd1").load("https://tools.apgy.in/includes/addds/bottom.html");
-}, 2000);
-}
-
-</script>
-
-    </body>
+      window.location.href = appLink;
+    });
+  </script>
+</body>
 </html>
-

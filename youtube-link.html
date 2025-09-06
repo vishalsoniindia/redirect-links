@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to ElectroDonut YouTube</title>
+    <title>Redirect to ElectroDonut YouTube Channel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -92,6 +92,26 @@
             transform: translateY(0);
         }
         
+        .browser-btn {
+            display: inline-block;
+            background: #4285f4;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 10px 5px;
+            box-shadow: 0 4px 10px rgba(66, 133, 244, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .browser-btn:hover {
+            background: #5392f6;
+            transform: translateY(-3px);
+        }
+        
         .instructions {
             margin-top: 30px;
             padding: 15px;
@@ -167,20 +187,26 @@
         <p>Click the button below to open my YouTube channel in the app or browser</p>
         
         <button id="redirectBtn" class="btn">
-            <i class="fab fa-youtube"></i> Open ElectroDonut Channel
+            <i class="fab fa-youtube"></i> Open in YouTube App
         </button>
         
+        <div>
+            <a href="https://www.youtube.com/@ElectroDonut" class="browser-btn" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Open in Browser
+            </a>
+        </div>
+        
         <div class="instructions">
-            <h3><i class="fas fa-info-circle"></i> How it works:</h3>
+            <h3><i class="fas fa-info-circle"></i> Having issues with Brave browser?</h3>
             <ul>
-                <li>If you have the YouTube app installed, it will open directly in the app</li>
-                <li>If you don't have the app, it will open in your web browser</li>
-                <li>You can subscribe to get updates on my latest videos</li>
+                <li>Brave may block automatic redirects to apps</li>
+                <li>Click "Open in Browser" if the app doesn't open</li>
+                <li>You can then open the YouTube app from the browser</li>
             </ul>
         </div>
         
         <div class="footer">
-            <p>Thank you for your support! ❤️ 1</p>
+            <p>Thank you for your support! ❤️ 2</p>
         </div>
     </div>
 
@@ -189,17 +215,26 @@
             // Try to open the YouTube app with the correct deep link
             window.location.href = 'vnd.youtube://www.youtube.com/@ElectroDonut';
             
-            // Set a timeout to fallback to browser if the app doesn't open
+            // Set a longer timeout for Brave browser
             setTimeout(function() {
-                window.location.href = 'https://www.youtube.com/@ElectroDonut';
-            }, 800);
+                // Check if we're still on the same page
+                if (!document.hidden) {
+                    window.location.href = 'https://www.youtube.com/@ElectroDonut';
+                }
+            }, 1000);
         });
         
-        // Check if we're coming back from a failed app redirect
-        if (window.location.href.indexOf('redirect_attempt') !== -1) {
-            // Directly go to YouTube in browser without trying app again
-            window.location.href = 'https://www.youtube.com/@ElectroDonut';
-        }
+        // Add a fallback for browsers that block the initial redirect
+        window.addEventListener('blur', function() {
+            // The app opened successfully, so don't redirect
+            clearTimeout(fallbackTimer);
+        });
+        
+        let fallbackTimer = setTimeout(function() {
+            if (!document.hidden) {
+                window.location.href = 'https://www.youtube.com/@ElectroDonut';
+            }
+        }, 1200);
     </script>
 </body>
 </html>
